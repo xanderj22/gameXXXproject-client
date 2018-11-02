@@ -1,1 +1,35 @@
 @import '~bootstrap/scss/bootstrap';
+
+$black: #000;
+
+.border {
+  border: 3px solid $black;
+  margin: 20px;
+  padding: 20px;
+}
+
+#message {
+
+  font-size: 40px;
+  text-align: center;
+  &.success {
+    background-color: lavender;
+  }
+  &.failure {
+    background-color: orangered;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
