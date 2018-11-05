@@ -3,14 +3,14 @@
 const store = require('../store.js')
 
 const signUpSuccess = data => {
-  $('#message').text('Signed up successfully')
+  $('#message').text('X  O  X  O  X  O')
   $('#message').removeClass()
-  $('#message').addClass('success')
+  $('#message').addClass('success-signup')
   console.log('signUpSuccess ran. Data is :', data)
 }
 
 const signUpFailure = error => {
-  $('#message').text('Error on sign up')
+  $('#message').text('Nope. Try again :/')
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('signUpFailure ran. Error is :', error)

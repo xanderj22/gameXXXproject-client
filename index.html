@@ -22,7 +22,7 @@
       }
 
       button {
-        font-size: 25px;
+        font-size: 35px;
         background-color: #2196F3;
         border: 1px solid;
       }
@@ -31,17 +31,17 @@
       display: grid;
       grid-template-columns: auto auto auto;
       align-self: auto;
-
       background-color: #2196F3;
       padding: 10px;
       }
       .grid-item {
       background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(0, 0, 0, 0.8);
+      border: 2px solid rgba(0, 0, 0, 0.8);
       padding: 20px;
-      font-size: 30px;
+      font-size: 40px;
       text-align: center;
       }
+
       </style>
 
     </head>
@@ -49,9 +49,11 @@
       <h1>TIC TAC TOE</h1>
       <h2>A fun and exciting game for the whole hee-haw gang</h2>
 
-      <button id="create-game">Create Game</button>
-
       <p id="message"></p>
+
+      <button id="create-game" class="button">Start Game</button>
+      <button id="replay-game" class="button">Play Again</button>
+
 
         <form id="sign-up" class="border">
           <fieldset>
@@ -84,8 +86,6 @@
         <form id="sign-out" class="border">
           <fieldset>
             <legend> Sign Out! </legend>
-            <input type="text" name="credentials[email]" placeholder="Email">
-            <input type="password" name="credentials[password]" placeholder="Password">
             <input type="submit" value="Sign out!">
           </fieldset>
         </form>
@@ -93,16 +93,15 @@
 
     <div class="grid-container">
       <div class="grid-item" id='0'>X</div>
-      <div class="grid-item" id='1'>X</div>
+      <div class="grid-item" id='1'>O</div>
       <div class="grid-item" id='2'>X</div>
-      <div class="grid-item" id='3'>X</div>
-      <div class="grid-item" id='4'>O</div>
-      <div class="grid-item" id='5'>X</div>
+      <div class="grid-item" id='3'>O</div>
+      <div class="grid-item" id='4'>X</div>
+      <div class="grid-item" id='5'>O</div>
       <div class="grid-item" id='6'>X</div>
-      <div class="grid-item" id='7'>X</div>
+      <div class="grid-item" id='7'>O</div>
       <div class="grid-item" id='8'>X</div>
     </div>
-
 
 
     </body>
