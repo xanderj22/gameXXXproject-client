@@ -22,20 +22,20 @@ const updateGame = function (apiData) {
     data: apiData
   })
 }
-// Don't need replayGame API
-// const replayGame = function () {
-// return $.ajax({
-// url: config.apiUrl + '/games/:id',
-// method: 'PATCH',
-// headers: {
-// Authorization: 'Token token=' + store.user.token
-// },
-// data: {}
-// })
+// TO DO:
+// const storeGame = function () {
+  // return $.ajax({
+    // url: config.apiUrl + '/games/' + store.GameID,
+    // method: 'GET',
+    // headers: {
+      // Authorization: 'Token token=' + store.user.token
+    // },
+    // data: {}
+  // })
 // }
 
 module.exports = {
   createGame,
   updateGame
-  // replayGame
+  // storeGame
 }

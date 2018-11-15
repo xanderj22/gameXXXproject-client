@@ -61,8 +61,8 @@ const onGridItemClick = event => {
         apiData.game.cell.value = 'o'
       }
 
-      addXO(gridID)
-      winTest()
+      const currentPlayer = addXO(gridID)
+      winTest(currentPlayer)
       if (gameWon === true) {
         apiData.game.over = true
       }
@@ -77,28 +77,17 @@ const onGridItemClick = event => {
 // This should go in ui.js
 const addXO = gridID => {
 // get the html object with the ID value of whatever gridID is set to
+  let currentPlayer
   if (playerTurn % 2 === 0) {
     $(`#${gridID}`).text('X')
+    currentPlayer = 'X'
   } else {
+    currentPlayer = 'O'
     $(`#${gridID}`).text('O')
   }
+  return currentPlayer
 }
 
-// Start on creating game object
-// const cellData = getFormFields(event.target)
-// console.log(cellData)
-// const data = {
-//   game: {
-//     cell: {
-//       index: cellData.cell.index,
-//       value: cellData.cell.value
-//     }
-//   },
-//   over: false
-// }
-
-// TO do ==> See notes from Danny's one on one help session 11/05/2018
-// Keep track of Xs and Os [set up index] (done)
 // Save response from server in ui.handleSuccessfulCreate
 // Put the game object in store
 // api.updateGame()
@@ -109,16 +98,15 @@ const addXO = gridID => {
 // // set up logic to interact with grid
 const winValues = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
 
-function winTest () {
+function winTest (currentPlayer) {
   for (let i = 0; i < winValues.length; i++) {
-    let w = winValues[i];
+    let w = winValues[i]
 
     if (storeValues[w[0]] === storeValues[w[1]] && storeValues[w[1]] === storeValues[w[2]] && storeValues[w[0]] !== '') {
       console.log('victory')
       gameWon = true
-      $('#message').text('You Win!!')
-    }
-    else if (playerTurn === 8) {
+      $('#message').text('You Win!! ' + currentPlayer)
+    } else if (playerTurn === 8) {
       console.log('game is a tie')
       $('#message').text('Tie Game. Play Again!')
     }
