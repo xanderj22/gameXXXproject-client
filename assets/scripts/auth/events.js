@@ -37,6 +37,7 @@ const onSignOut = event => {
   api.signOut()
     .then(ui.signOutSuccess) // if request was successful
     .catch(ui.signOutFailure) // if request failed, tell me why (Status Response Code)
+  $('.grid-container').css('display', 'none')
 }
 
 module.exports = {

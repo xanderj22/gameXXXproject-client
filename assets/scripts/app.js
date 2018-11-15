@@ -19,5 +19,6 @@ $(() => {
   // Event listener goes here: i.e., "on.click"
   // $('#create-game').on('click', () => console.log('hey'))
   $('#create-game').on('click', gameEvents.onCreateGameClick)
+  $('#replay-game').on('click', gameEvents.onReplayGameClick)
   $('.grid-item').on('click', gameEvents.onGridItemClick)
 })
