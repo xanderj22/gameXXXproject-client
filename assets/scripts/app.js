@@ -21,4 +21,5 @@ $(() => {
   $('#create-game').on('click', gameEvents.onCreateGameClick)
   $('#replay-game').on('click', gameEvents.onReplayGameClick)
   $('.grid-item').on('click', gameEvents.onGridItemClick)
+  $('#game-info').on('click', gameEvents.onGameInfo)
 })

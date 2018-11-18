@@ -1,7 +1,8 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields.js')
+// const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
+const ui = require('./ui.js')
 const store = require('./../store.js')
 
 let playerTurn = 0
@@ -12,27 +13,35 @@ const onCreateGameClick = function (event) {
   event.preventDefault()
   api.createGame()
     .then(storeGameID)
-  console.log('success on creating game')
-  console.log('stored token is', store.user.token)
+  // console.log('success on creating game')
+  // console.log('stored token is', store.user.token)
   // .then(console.log)
   // .catch(console.error)
 }
 const storeGameID = function (apiGamedata) {
-  console.log(apiGamedata)
+  // console.log(apiGamedata)
   store.GameID = apiGamedata.game.id
   $('.grid-container').css('display', 'grid')
 }
 
 const onReplayGameClick = function (event) {
   event.preventDefault()
-  // Don't need: // api.replayGame()
-  console.log('success on replaying game')
+  api.createGame()
+  // .then()
+  // console.log('success on replaying game')
   storeValues = ['', '', '', '', '', '', '', '', '']
   playerTurn = 0
   gameWon = false
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
   }
+}
+
+const onGameInfo = function (event) {
+  event.preventDefault()
+  api.storeGame()
+    .then(ui.storeGameSuccess)
+    .catch(ui.storeGameFailure)
 }
 
 const onGridItemClick = event => {
@@ -49,8 +58,8 @@ const onGridItemClick = event => {
   }
 
   if (gameWon === false) {
-    console.log('grid click successful')
-    console.log(event.currentTarget.id)
+    // console.log('grid click successful')
+    // console.log(event.currentTarget.id)
     const gridID = event.currentTarget.id
     if (storeValues[gridID] === '') {
       if (playerTurn % 2 === 0) {
@@ -68,13 +77,13 @@ const onGridItemClick = event => {
       }
       // incrementing moves/player turn by 1
       playerTurn += 1 // Same as playerTurn = playerTurn +1
-      console.log(storeValues)
+      // console.log(storeValues)
       api.updateGame(apiData)
     }
   }
 }
 
-// This should go in ui.js
+// This should go in ui.js ??
 const addXO = gridID => {
 // get the html object with the ID value of whatever gridID is set to
   let currentPlayer
@@ -88,39 +97,39 @@ const addXO = gridID => {
   return currentPlayer
 }
 
-// Save response from server in ui.handleSuccessfulCreate
-// Put the game object in store
+// Put the game object in store ??
 // api.updateGame()
-//   .then(console.log) // ui.handleSuccessfulCreate
+//   .then(console.log)
 //   .catch(console.error)
 // }
 
-// // set up logic to interact with grid
+// // Setting up logic to interact with grid
 const winValues = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
 
 function winTest (currentPlayer) {
   for (let i = 0; i < winValues.length; i++) {
-    let w = winValues[i]
+    const w = winValues[i]
 
     if (storeValues[w[0]] === storeValues[w[1]] && storeValues[w[1]] === storeValues[w[2]] && storeValues[w[0]] !== '') {
-      console.log('victory')
+      // console.log('victory')
       gameWon = true
       $('#message').text('You Win!! ' + currentPlayer)
+      setTimeout(clearText, 3600)
     } else if (playerTurn === 8) {
-      console.log('game is a tie')
+      // console.log('game is a tie')
       $('#message').text('Tie Game. Play Again!')
+      setTimeout(clearText, 3600)
     }
   }
 }
 
-// From book example:
-// const data = getFormFields(event.target)
-// api.changePassword(data)
-//  .then(ui.changePasswordSuccess)
-//  .catch(ui.changePasswordFailure)*
+const clearText = function () {
+  document.getElementById('message').textContent = ''
+}
 
 module.exports = {
   onCreateGameClick,
   onReplayGameClick,
-  onGridItemClick
+  onGridItemClick,
+  onGameInfo
 }

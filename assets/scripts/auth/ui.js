@@ -6,7 +6,7 @@ const signUpSuccess = data => {
   $('#message').text('X  O  X  O  X  O')
   $('#message').removeClass()
   $('#message').addClass('success-signup')
-  console.log('signUpSuccess ran. Data is :', data)
+  // console.log('signUpSuccess ran. Data is :', data)
 }
 
 const signUpFailure = error => {
@@ -19,9 +19,10 @@ const signUpFailure = error => {
 const signInSuccess = data => {
   store.user = data.user
   $('#message').text('Signed in successfully')
+  setTimeout(clearText, 2800)
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signInSuccess ran. Data is :', data)
+  // console.log('signInSuccess ran. Data is :', data)
 }
 
 const signInFailure = error => {
@@ -33,9 +34,10 @@ const signInFailure = error => {
 
 const changePasswordSuccess = data => {
   $('#message').text('Password changed successfully')
+  setTimeout(clearText, 2800)
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('changePasswordSuccess ran. Data is :', data)
+  // console.log('changePasswordSuccess ran. Data is :', data)
 }
 
 const changePasswordFailure = error => {
@@ -46,11 +48,11 @@ const changePasswordFailure = error => {
 }
 
 const signOutSuccess = data => {
-  $('#message').text('Signed out successfully')
+  $('#message').text('Success on sign out')
   store.user = null
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signOutSuccess ran. Data is :', data)
+  // console.log('signOutSuccess ran. Data is :', data)
 }
 
 const signOutFailure = error => {
@@ -58,6 +60,10 @@ const signOutFailure = error => {
   $('#message').removeClass()
   $('#message').addClass('failure')
   console.error('signOutFailure ran. Error is :', error)
+}
+
+const clearText = function () {
+  document.getElementById('message').textContent = ''
 }
 
 module.exports = {

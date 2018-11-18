@@ -22,20 +22,25 @@ const updateGame = function (apiData) {
     data: apiData
   })
 }
-// TO DO:
-// const storeGame = function () {
-  // return $.ajax({
-    // url: config.apiUrl + '/games/' + store.GameID,
-    // method: 'GET',
-    // headers: {
-      // Authorization: 'Token token=' + store.user.token
-    // },
+
+// TO DO--Increment games played during game session:
+const storeGame = function () {
+  // console.log('getting game info')
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    // url: config.apiUrl + 'games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+    // 'userId': store.user.id
     // data: {}
-  // })
-// }
+  })
+}
 
 module.exports = {
   createGame,
-  updateGame
-  // storeGame
+  updateGame,
+  storeGame
 }
