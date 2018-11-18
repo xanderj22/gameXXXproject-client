@@ -33,10 +33,12 @@ const onChangePassword = event => {
 }
 
 const onSignOut = event => {
-  event.preventDefault()
+  // event.preventDefault()
+  $('#message').text('You are signed out!')
   api.signOut()
-    .then(ui.signOutSuccess) // if request was successful
-    .catch(ui.signOutFailure) // if request failed, tell me why (Status Response Code)
+  // .then(ui.signOutSuccess) // if request was successful
+  // .catch(ui.signOutFailure) // if request failed, tell me why (Status Response Code)
+  $('.grid-container').css('display', 'none')
 }
 
 module.exports = {

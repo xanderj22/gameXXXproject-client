@@ -2,7 +2,6 @@
 
 $black: #000;
 
-
 #message {
 
   font-size: 40px;
@@ -36,8 +35,8 @@ $black: #000;
   font-size: 25px;
   color: purple;
   background-color: #2196F3;
-  margin-right: 200px;
-  margin-left: 200px;
+  margin-right: 75px;
+  margin-left: 125px;
 
 }
 
@@ -45,9 +44,17 @@ $black: #000;
   font-size: 25px;
   color: purple;
   background-color: #2196F3;
-  margin-left: 200px;
+  margin-left: 75px;
   marign-right: 100px;
 
+}
+
+#game-info {
+  font-size: 25px;
+  color: purple;
+  background-color: #2196F3;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 .border {
@@ -62,11 +69,12 @@ $black: #000;
 }
 
 .grid-container {
-  display: grid;
+  display: none;
   grid-template-columns: auto auto auto;
   background-color: #2196F3;
   padding: 10px;
 }
+
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
