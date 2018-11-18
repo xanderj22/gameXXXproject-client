@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>TIC TAC TOE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+      <style>
+
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      button {
+        font-size: 35px;
+        background-color: #2196F3;
+        border: 1px solid;
+      }
+
+      .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      align-self: auto;
+      background-color: #2196F3;
+      padding: 10px;
+      }
+
+      .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 40px;
+      text-align: center;
+      }
+
+      </style>
+
+    </head>
+    <body>
+      <h1>TIC TAC TOE</h1>
+      <h2>A fun and exciting game for the whole hee-haw gang</h2>
+
+      <p id="message"></p>
+
+      <button id="create-game" class="button">Start Game</button>
+      <button id="replay-game" class="button">Play Again</button>
+      <button id="game-info" class="button">Game Tally</button>
+
+
+        <form id="sign-up" class="border">
+          <fieldset>
+            <legend> Sign Up! </legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+
+        <form id="sign-in" class="border">
+          <fieldset>
+            <legend> Sign In and Start Game! </legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign in!">
+          </fieldset>
+        </form>
+
+        <form id="change-password" class="border">
+           <fieldset>
+             <legend>Change password!</legend>
+             <input type="password" name="passwords[old]" placeholder="Old password">
+             <input type="password" name="passwords[new]" placeholder="New password">
+             <input type="submit" value="Change password!">
+           </fieldset>
+        </form>
+
+        <form id="sign-out" class="border">
+          <fieldset>
+            <legend> Sign Out! </legend>
+            <input type="submit" value="Sign out!">
+          </fieldset>
+        </form>
+
+
+    <div class="grid-container">
+      <div class="grid-item" id='0'></div>
+      <div class="grid-item" id='1'></div>
+      <div class="grid-item" id='2'></div>
+      <div class="grid-item" id='3'></div>
+      <div class="grid-item" id='4'></div>
+      <div class="grid-item" id='5'></div>
+      <div class="grid-item" id='6'></div>
+      <div class="grid-item" id='7'></div>
+      <div class="grid-item" id='8'></div>
+    </div>
+
+
+    </body>
+</html>
