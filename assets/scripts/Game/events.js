@@ -26,6 +26,8 @@ const storeGameID = function (apiGamedata) {
 
 const onReplayGameClick = function (event) {
   event.preventDefault()
+  // **To increment number of games played (Games Talley after
+  // replaying games during the same sign-in session (added api.createGame)
   api.createGame()
   // .then()
   // console.log('success on replaying game')
