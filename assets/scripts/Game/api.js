@@ -11,7 +11,7 @@ const createGame = function () {
     data: {}
   })
 }
-// Not sure about the apiData
+
 const updateGame = function (apiData) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.GameID,
@@ -23,7 +23,7 @@ const updateGame = function (apiData) {
   })
 }
 
-// TO DO--Increment games played during game session:
+// Increment games played during game session:
 const storeGame = function () {
   // console.log('getting game info')
   return $.ajax({

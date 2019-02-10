@@ -4,6 +4,7 @@ const store = require('../store.js')
 
 const signUpSuccess = data => {
   $('#message').text('X  O  X  O  X  O')
+  // Clears the message class before setting a different one
   $('#message').removeClass()
   $('#message').addClass('success-signup')
   // console.log('signUpSuccess ran. Data is :', data)

@@ -7,6 +7,7 @@ const store = require('./../store.js')
 
 let playerTurn = 0
 let gameWon = false
+// Creating empty array to store data
 let storeValues = ['', '', '', '', '', '', '', '', '']
 
 const onCreateGameClick = function (event) {
@@ -31,9 +32,11 @@ const onReplayGameClick = function (event) {
   api.createGame()
   // .then()
   // console.log('success on replaying game')
+  // Clearing stored game data from last game (onReplayGameClick)
   storeValues = ['', '', '', '', '', '', '', '', '']
   playerTurn = 0
   gameWon = false
+  // Clearing the game board/physical display from previous game
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
   }
@@ -45,7 +48,7 @@ const onGameInfo = function (event) {
     .then(ui.storeGameSuccess)
     .catch(ui.storeGameFailure)
 }
-
+// Sending data to api based on index (grid cell) clicked and updating store
 const onGridItemClick = event => {
   event.preventDefault()
   // Not sure about the apiData
@@ -71,7 +74,7 @@ const onGridItemClick = event => {
         storeValues[gridID] = 'O'
         apiData.game.cell.value = 'o'
       }
-
+      // Determining who current is and assigns X or O accordingly
       const currentPlayer = addXO(gridID)
       winTest(currentPlayer)
       if (gameWon === true) {
@@ -87,7 +90,7 @@ const onGridItemClick = event => {
 
 // This should go in ui.js ??
 const addXO = gridID => {
-// get the html object with the ID value of whatever gridID is set to
+// Get the html object with the ID value of whatever gridID is set to
   let currentPlayer
   if (playerTurn % 2 === 0) {
     $(`#${gridID}`).text('X')
@@ -99,19 +102,15 @@ const addXO = gridID => {
   return currentPlayer
 }
 
-// Put the game object in store ??
-// api.updateGame()
-//   .then(console.log)
-//   .catch(console.error)
-// }
-
 // // Setting up logic to interact with grid
 const winValues = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
 
+// Logic to determine winner and provide user response
 function winTest (currentPlayer) {
   for (let i = 0; i < winValues.length; i++) {
     const w = winValues[i]
 
+    // Iterating through the winValues combinations to determine if there's a winning or tie combination
     if (storeValues[w[0]] === storeValues[w[1]] && storeValues[w[1]] === storeValues[w[2]] && storeValues[w[0]] !== '') {
       // console.log('victory')
       gameWon = true
